@@ -43,6 +43,52 @@ body {
   transition: background 0.3s ease, color 0.3s ease;
 }
 
+.preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  background: rgba(3, 6, 18, 0.96);
+  transition: opacity 0.45s ease, visibility 0.45s ease;
+}
+
+.preloader.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.preloader-ring {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  border: 4px solid rgba(109, 124, 255, 0.25);
+  border-top-color: var(--secondary);
+  animation: spin 1s linear infinite;
+}
+
+.cursor-glow {
+  position: fixed;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 2;
+  background: radial-gradient(circle, rgba(0, 216, 255, 0.14) 0%, rgba(0, 216, 255, 0) 70%);
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 #particlesCanvas {
   position: fixed;
   inset: 0;
@@ -290,6 +336,13 @@ h2 {
 .timeline article:hover {
   transform: translateY(-4px);
   border-color: rgba(142, 187, 255, 0.7);
+}
+
+.card.tilt,
+.tip.tilt,
+.practice-box.tilt {
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  will-change: transform;
 }
 
 .cta-row {
