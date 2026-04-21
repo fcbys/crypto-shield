@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Криптография как ресурс защиты цифровой информации: теория, методы шифрования, практика, история и применение." />
+  <meta name="keywords" content="криптография, шифрование, защита данных, RSA, AES, Цезарь, Виженер" />
+  <title>Криптография и защита цифровой информации</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body data-theme="dark">
+  <canvas id="particlesCanvas" aria-hidden="true"></canvas>
+  <div class="progress-bar" id="progressBar"></div>
+  <div class="bg-glow bg-glow-1"></div>
+  <div class="bg-glow bg-glow-2"></div>
+  <div class="toast" id="toast"></div>
+  <header class="header" id="top">
+    <nav class="nav">
+      <a class="logo" href="#top">CryptoStudy</a>
+      <div class="nav-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Переключить тему">🌙</button>
+        <button class="menu-toggle" id="menuToggle" aria-label="Открыть меню">☰</button>
+      </div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#landing">Главная</a></li>
+        <li><a href="#theory">Теория</a></li>
+        <li><a href="#methods">Методы</a></li>
+        <li><a href="#practice">Практика</a></li>
+        <li><a href="#history">История</a></li>
+        <li><a href="#applications">Применение</a></li>
+        <li><a href="#security-tips">Безопасность</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="landing reveal" id="landing">
+      <h1>Криптография как ресурс защиты цифровой информации</h1>
+      <p class="lead" id="typingLead">Образовательный сайт для школьников, студентов и всех, кто хочет понять, как шифрование защищает данные в интернете, мессенджерах и банковских системах.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="#theory">Начать изучение</a>
+        <a class="btn btn-secondary" href="#methods">Перейти к примерам</a>
+      </div>
+      <div class="hero-strip">
+        <div class="hero-chip">🔐 HTTPS</div>
+        <div class="hero-chip">🛡️ 2FA</div>
+        <div class="hero-chip">🧠 Антифишинг</div>
+        <div class="hero-chip">⚡ AES / RSA</div>
+      </div>
+      <div class="cards">
+        <article class="card">📘 <h3>Теория</h3><p>Ключевые понятия и принципы.</p></article>
+        <article class="card">🔐 <h3>Методы шифрования</h3><p>От Цезаря до AES и RSA.</p></article>
+        <article class="card">🧪 <h3>Практика</h3><p>Задачи и мини-тренажер.</p></article>
+        <article class="card">📚 <h3>История</h3><p>Как развивалась криптография.</p></article>
+      </div>
+    </section>
+
+    <section id="theory" class="section reveal">
+      <h2>Теория криптографии</h2>
+      <p class="lead">Простое объяснение: криптография — как сейф для данных. Внутри сейфа лежит сообщение, а открыть его можно только правильным ключом.</p>
+      <h3>Основные понятия</h3>
+      <div class="grid">
+        <article><strong>Шифр</strong><p>Способ преобразования текста в зашифрованный вид.</p></article>
+        <article><strong>Ключ</strong><p>Секретный параметр, нужный для шифрования и расшифровки.</p></article>
+        <article><strong>Алгоритм</strong><p>Формальные правила, по которым работает шифрование.</p></article>
+      </div>
+      <h3>Виды криптографии</h3>
+      <ul>
+        <li><strong>Симметричная:</strong> один ключ для шифрования и расшифровки.</li>
+        <li><strong>Асимметричная:</strong> пара открытого и закрытого ключей.</li>
+      </ul>
+      <h3>Принципы безопасности</h3>
+      <div class="grid">
+        <article><strong>Конфиденциальность</strong><p>Данные доступны только авторизованным пользователям.</p></article>
+        <article><strong>Целостность</strong><p>Информация не изменена без разрешения.</p></article>
+        <article><strong>Аутентификация</strong><p>Подтверждение личности и источника данных.</p></article>
+      </div>
+      <h3>Криптография на бытовых примерах</h3>
+      <div class="easy-grid">
+        <article><strong>Симметричный ключ</strong><p>Как один ключ от двери: им и закрываете, и открываете.</p></article>
+        <article><strong>Асимметричная пара</strong><p>Почтовый ящик: бросить письмо может каждый (публичный ключ), достать — только владелец (приватный ключ).</p></article>
+        <article><strong>Хеш</strong><p>Цифровой отпечаток файла: если файл меняется, отпечаток сразу становится другим.</p></article>
+      </div>
+      <p class="mini-summary">Мини-итог: криптография защищает данные с помощью алгоритмов и ключей, сохраняя секретность, целостность и доверие.</p>
+      <div class="diagram">[Пользователь] -> [Алгоритм + Ключ] -> [Шифротекст] -> [Расшифровка]</div>
+      <div class="pager"><a href="#methods">Далее: методы -></a></div>
+    </section>
+
+    <section id="methods" class="section reveal">
+      <h2>Методы шифрования</h2>
+      <h3>Простые шифры</h3>
+      <div class="method-table">
+        <div><strong>Метод</strong></div><div><strong>Принцип</strong></div><div><strong>Пример</strong></div><div><strong>Плюсы / Минусы</strong></div>
+        <div>Цезаря</div><div>Сдвиг букв на фиксированное число.</div><div>HELLO -> KHOOR (сдвиг 3)</div><div>+ Простота; - Легко взломать</div>
+        <div>Виженера</div><div>Полиалфавитный шифр по ключевому слову.</div><div>Текст + ключ KEY</div><div>+ Сложнее Цезаря; - Уязвим к анализу</div>
+      </div>
+      <h3>Современные шифры</h3>
+      <div class="method-table">
+        <div>RSA</div><div>Асимметричное шифрование на основе факторизации.</div><div>Открытый ключ шифрует, закрытый расшифровывает.</div><div>+ Безопасный обмен ключами; - Медленнее AES</div>
+        <div>AES</div><div>Блочный симметричный алгоритм.</div><div>AES-128/192/256 для файлов и трафика.</div><div>+ Быстрый и надежный; - Нужна безопасная передача ключа</div>
+      </div>
+      <p class="mini-summary">Мини-итог: классические шифры полезны для обучения, современные - для реальной защиты данных.</p>
+      <div class="pager"><a href="#theory">&larr; Назад: теория</a><a href="#practice">Далее: практика &rarr;</a></div>
+    </section>
+
+    <section id="practice" class="section reveal">
+      <h2>Практика</h2>
+      <h3>Задания</h3>
+      <ol>
+        <li>Расшифруйте: <code>KHOOR</code> (шифр Цезаря, сдвиг 3 назад).</li>
+        <li>Зашифруйте слово <code>DATA</code> сдвигом 2.</li>
+      </ol>
+      <h3>Интерактив: шифр Цезаря</h3>
+      <div class="practice-box">
+        <label for="inputText">Введите текст</label>
+        <input id="inputText" type="text" placeholder="Например: HELLO" />
+        <label for="shift">Сдвиг</label>
+        <input id="shift" type="number" min="1" max="25" value="3" />
+        <div class="cta-row">
+          <button class="btn btn-primary" id="encryptBtn">Зашифровать</button>
+          <button class="btn btn-secondary" id="decryptBtn">Расшифровать</button>
+        </div>
+        <p id="result" class="result">Результат появится здесь.</p>
+        <button class="btn btn-secondary" id="copyResult">Копировать результат</button>
+        <details>
+          <summary>Показать объяснение решения</summary>
+          <p>Каждая буква сдвигается по алфавиту на указанное число позиций. Для расшифровки сдвиг применяется в обратную сторону.</p>
+        </details>
+      </div>
+      <h3>Итоговый тест</h3>
+      <div class="quiz">
+        <p><strong>Что использует HTTPS для защиты данных?</strong></p>
+        <label><input type="radio" name="q1" value="a" /> Только симметричное шифрование</label>
+        <label><input type="radio" name="q1" value="b" /> Комбинацию симметричного и асимметричного</label>
+        <label><input type="radio" name="q1" value="c" /> Только хеширование</label>
+        <button class="btn btn-primary" id="checkQuiz">Проверить</button>
+        <p id="quizResult"></p>
+      </div>
+      <div class="pager"><a href="#methods">&larr; Назад: методы</a><a href="#history">Далее: история &rarr;</a></div>
+    </section>
+
+    <section id="history" class="section reveal">
+      <h2>История криптографии</h2>
+      <div class="timeline">
+        <article><h3>Древность</h3><p>Шифр Цезаря и скитала в античности.</p></article>
+        <article><h3>Средние века</h3><p>Появление частотного анализа и усложнение шифров.</p></article>
+        <article><h3>XX век</h3><p>Enigma, криптоанализ и развитие вычислительных методов.</p></article>
+        <article><h3>Современность</h3><p>RSA, AES, постквантовые алгоритмы и массовое применение в интернете.</p></article>
+      </div>
+      <p><strong>Факт:</strong> ошибки в реализации часто опаснее, чем сам алгоритм.</p>
+      <div class="pager"><a href="#practice">&larr; Назад: практика</a><a href="#applications">Далее: применение &rarr;</a></div>
+    </section>
+
+    <section id="applications" class="section reveal">
+      <h2>Применение криптографии</h2>
+      <ul class="app-list">
+        <li><strong>Интернет (HTTPS):</strong> защищенное соединение браузера и сайта.</li>
+        <li><strong>Мессенджеры:</strong> сквозное шифрование сообщений.</li>
+        <li><strong>Банковские системы:</strong> защита платежей и персональных данных.</li>
+        <li><strong>Блокчейн:</strong> цифровые подписи и проверка транзакций.</li>
+      </ul>
+      <div class="pager"><a href="#history">&larr; Назад: история</a><a href="#security-tips">Далее: безопасность &rarr;</a></div>
+    </section>
+
+    <section id="security-tips" class="section reveal">
+      <h2>Практические советы по безопасности в интернете</h2>
+      <p class="lead">Современные привычки, которые реально снижают риск взлома аккаунтов, утечки данных и фишинга.</p>
+      <div class="security-focus">
+        <h3>Быстрый план на каждый день</h3>
+        <p>1) Уникальные пароли, 2) 2FA, 3) проверка ссылок, 4) регулярные обновления. Эти 4 шага закрывают большинство массовых атак.</p>
+      </div>
+      <div class="tips-grid">
+        <article class="tip">
+          <h3>1) Пароли и менеджер паролей</h3>
+          <p>Используйте уникальные пароли для каждого сервиса и храните их в менеджере паролей. Минимум 14 символов, лучше парольные фразы.</p>
+        </article>
+        <article class="tip">
+          <h3>2) Включайте 2FA везде</h3>
+          <p>Предпочитайте приложение-аутентификатор или аппаратный ключ (FIDO2/WebAuthn), а не SMS, если есть выбор.</p>
+        </article>
+        <article class="tip">
+          <h3>3) Антифишинг-пауза 10 секунд</h3>
+          <p>Перед кликом проверьте домен, орфографию, отправителя и срочность сообщения. Подозрительные письма открывайте только через официальный сайт.</p>
+        </article>
+        <article class="tip">
+          <h3>4) Обновления = защита</h3>
+          <p>Включите автообновления ОС, браузера и приложений. Большинство атак используют уже закрытые уязвимости.</p>
+        </article>
+        <article class="tip">
+          <h3>5) Приватность в мессенджерах</h3>
+          <p>Включите блокировку по PIN/биометрии, скрывайте превью уведомлений и проверяйте настройки резервных копий.</p>
+        </article>
+        <article class="tip">
+          <h3>6) Осторожно с публичным Wi‑Fi</h3>
+          <p>Не входите в банк и почту через открытые сети без VPN. Проверяйте, что сайт работает по HTTPS.</p>
+        </article>
+      </div>
+
+      <div class="security-checklist">
+        <h3>Чеклист перед кликом</h3>
+        <label><input type="checkbox" class="security-check" /> Домен сайта выглядит корректно, без подмены символов</label>
+        <label><input type="checkbox" class="security-check" /> Нет просьбы срочно перевести деньги или сообщить код</label>
+        <label><input type="checkbox" class="security-check" /> Файл/ссылка ожидаемы и пришли от известного контакта</label>
+        <label><input type="checkbox" class="security-check" /> В аккаунте включена двухфакторная аутентификация</label>
+        <label><input type="checkbox" class="security-check" /> Браузер и система обновлены</label>
+        <div class="cta-row">
+          <button class="btn btn-primary" id="checkSecurityLevel">Оценить мой уровень защиты</button>
+        </div>
+        <p id="securityScore" class="result">Отметьте пункты и нажмите кнопку, чтобы увидеть оценку.</p>
+      </div>
+      <p class="mini-summary">Мини-итог: лучшая защита — это связка «уникальные пароли + 2FA + критическое мышление + своевременные обновления».</p>
+      <div class="pager"><a href="#applications">&larr; Назад: применение</a><a href="#faq">Далее: FAQ &rarr;</a></div>
+    </section>
+
+    <section id="faq" class="section reveal">
+      <h2>FAQ и глоссарий</h2>
+      <details><summary>Можно ли взломать любой шифр?</summary><p>Теоретически да, но современные алгоритмы при корректной реализации и длинных ключах практически неуязвимы.</p></details>
+      <details><summary>Чем шифрование отличается от хеширования?</summary><p>Шифрование обратимо с ключом, хеширование - одностороннее преобразование.</p></details>
+      <h3>Глоссарий</h3>
+      <ul>
+        <li><strong>Шифротекст:</strong> результат шифрования исходного сообщения.</li>
+        <li><strong>Открытый ключ:</strong> ключ, который можно передавать публично.</li>
+        <li><strong>Закрытый ключ:</strong> секретный ключ владельца.</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>Учебный проект по теме криптографии • 2026</p>
+    <a href="#top">Наверх ↑</a>
+  </footer>
+  <button class="to-top" id="toTop" aria-label="Наверх">↑</button>
+
+  <script src="script.js"></script>
+</body>
+</html>
