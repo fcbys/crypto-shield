@@ -188,23 +188,6 @@ if (checkPasswordStrengthBtn && passwordCheckInput && passwordStrengthResult) {
   });
 }
 
-const checkQuiz = document.getElementById("checkQuiz");
-const quizResult = document.getElementById("quizResult");
-
-if (checkQuiz && quizResult) {
-  checkQuiz.addEventListener("click", () => {
-    const answer = document.querySelector('input[name="q1"]:checked');
-    if (!answer) {
-      quizResult.textContent = "Сначала выберите вариант ответа.";
-      return;
-    }
-    quizResult.textContent =
-      answer.value === "b"
-        ? "Верно! HTTPS использует комбинацию асимметричного и симметричного шифрования."
-        : "Пока неверно. Подумайте о том, как происходит обмен ключами и шифрование трафика.";
-  });
-}
-
 if (particlesCanvas) {
   const ctx = particlesCanvas.getContext("2d");
   let particles = [];
