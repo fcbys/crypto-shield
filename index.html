@@ -9,6 +9,11 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body data-theme="dark">
+  <div class="preloader" id="preloader">
+    <div class="preloader-ring"></div>
+    <p>Инициализация CryptoShield...</p>
+  </div>
+  <div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
   <canvas id="particlesCanvas" aria-hidden="true"></canvas>
   <div class="progress-bar" id="progressBar"></div>
   <div class="bg-glow bg-glow-1"></div>
@@ -136,6 +141,18 @@
         <label><input type="radio" name="q1" value="c" /> Только хеширование</label>
         <button class="btn btn-primary" id="checkQuiz">Проверить</button>
         <p id="quizResult"></p>
+      </div>
+      <h3>Крипто-лаборатория</h3>
+      <div class="practice-box">
+        <p>Сгенерируйте надежный пароль и проверьте его стойкость.</p>
+        <div class="cta-row">
+          <button class="btn btn-primary" id="generatePasswordBtn">Сгенерировать пароль</button>
+        </div>
+        <input id="passwordField" type="text" placeholder="Здесь появится пароль" readonly />
+        <label for="passwordCheckInput">Проверка своего пароля</label>
+        <input id="passwordCheckInput" type="text" placeholder="Введите пароль для оценки" />
+        <button class="btn btn-secondary" id="checkPasswordStrengthBtn">Проверить стойкость</button>
+        <p id="passwordStrengthResult" class="result">Оценка стойкости появится здесь.</p>
       </div>
       <div class="pager"><a href="#methods">&larr; Назад: методы</a><a href="#history">Далее: история &rarr;</a></div>
     </section>
