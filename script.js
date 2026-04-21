@@ -10,6 +10,13 @@ const checkSecurityLevel = document.getElementById("checkSecurityLevel");
 const securityScore = document.getElementById("securityScore");
 const securityChecks = document.querySelectorAll(".security-check");
 const particlesCanvas = document.getElementById("particlesCanvas");
+const preloader = document.getElementById("preloader");
+const cursorGlow = document.getElementById("cursorGlow");
+const generatePasswordBtn = document.getElementById("generatePasswordBtn");
+const passwordField = document.getElementById("passwordField");
+const passwordCheckInput = document.getElementById("passwordCheckInput");
+const checkPasswordStrengthBtn = document.getElementById("checkPasswordStrengthBtn");
+const passwordStrengthResult = document.getElementById("passwordStrengthResult");
 
 function showToast(message) {
   if (!toast) return;
@@ -17,6 +24,19 @@ function showToast(message) {
   toast.classList.add("show");
   setTimeout(() => toast.classList.remove("show"), 1700);
 }
+
+window.addEventListener("load", () => {
+  if (preloader) {
+    preloader.classList.add("hidden");
+  }
+});
+
+window.addEventListener("mousemove", (event) => {
+  if (!cursorGlow) return;
+  cursorGlow.style.opacity = "1";
+  cursorGlow.style.left = `${event.clientX}px`;
+  cursorGlow.style.top = `${event.clientY}px`;
+});
 
 if (menuToggle && navLinks) {
   menuToggle.addEventListener("click", () => {
@@ -129,6 +149,42 @@ if (checkSecurityLevel && securityScore && securityChecks.length) {
       securityScore.textContent = `Уровень защиты: ${percent}% (высокий). Отличная цифровая гигиена!`;
     }
     showToast("Оценка безопасности обновлена");
+  });
+}
+
+if (generatePasswordBtn && passwordField) {
+  generatePasswordBtn.addEventListener("click", () => {
+    const chars = "ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz23456789!@#$%^&*";
+    let password = "";
+    for (let i = 0; i < 16; i += 1) {
+      password += chars[Math.floor(Math.random() * chars.length)];
+    }
+    passwordField.value = password;
+    showToast("Сгенерирован новый пароль");
+  });
+}
+
+if (checkPasswordStrengthBtn && passwordCheckInput && passwordStrengthResult) {
+  checkPasswordStrengthBtn.addEventListener("click", () => {
+    const value = passwordCheckInput.value;
+    if (!value) {
+      passwordStrengthResult.textContent = "Введите пароль для проверки.";
+      return;
+    }
+    let score = 0;
+    if (value.length >= 12) score += 1;
+    if (/[A-Z]/.test(value)) score += 1;
+    if (/[a-z]/.test(value)) score += 1;
+    if (/[0-9]/.test(value)) score += 1;
+    if (/[^A-Za-z0-9]/.test(value)) score += 1;
+
+    if (score <= 2) {
+      passwordStrengthResult.textContent = "Стойкость: низкая. Добавьте длину, цифры и спецсимволы.";
+    } else if (score <= 4) {
+      passwordStrengthResult.textContent = "Стойкость: средняя. Пароль неплохой, но его можно усилить.";
+    } else {
+      passwordStrengthResult.textContent = "Стойкость: высокая. Отличный пароль.";
+    }
   });
 }
 
@@ -261,3 +317,17 @@ if ("IntersectionObserver" in window) {
 } else {
   revealBlocks.forEach((block) => block.classList.add("visible"));
 }
+
+const tiltTargets = document.querySelectorAll(".card, .tip, .practice-box");
+tiltTargets.forEach((element) => {
+  element.classList.add("tilt");
+  element.addEventListener("mousemove", (event) => {
+    const rect = element.getBoundingClientRect();
+    const px = (event.clientX - rect.left) / rect.width - 0.5;
+    const py = (event.clientY - rect.top) / rect.height - 0.5;
+    element.style.transform = `perspective(800px) rotateX(${(-py * 6).toFixed(2)}deg) rotateY(${(px * 8).toFixed(2)}deg) translateY(-4px)`;
+  });
+  element.addEventListener("mouseleave", () => {
+    element.style.transform = "";
+  });
+});
