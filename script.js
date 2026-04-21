@@ -318,14 +318,24 @@ if ("IntersectionObserver" in window) {
   revealBlocks.forEach((block) => block.classList.add("visible"));
 }
 
-const tiltTargets = document.querySelectorAll(".card, .tip, .practice-box");
-tiltTargets.forEach((element) => {
+const reactiveTargets = document.querySelectorAll(
+  ".card, .tip, .practice-box, .quiz, .method-table, .hero-chip, .btn, .easy-grid article, .security-focus, .security-checklist"
+);
+
+reactiveTargets.forEach((element) => {
   element.classList.add("tilt");
   element.addEventListener("mousemove", (event) => {
     const rect = element.getBoundingClientRect();
     const px = (event.clientX - rect.left) / rect.width - 0.5;
     const py = (event.clientY - rect.top) / rect.height - 0.5;
-    element.style.transform = `perspective(800px) rotateX(${(-py * 6).toFixed(2)}deg) rotateY(${(px * 8).toFixed(2)}deg) translateY(-4px)`;
+
+    // Negative translate creates a subtle "move away from cursor" effect.
+    const tx = (-px * 12).toFixed(2);
+    const ty = (-py * 10 - 2).toFixed(2);
+    const rx = (-py * 7).toFixed(2);
+    const ry = (px * 10).toFixed(2);
+
+    element.style.transform = `perspective(900px) translate3d(${tx}px, ${ty}px, 0) rotateX(${rx}deg) rotateY(${ry}deg)`;
   });
   element.addEventListener("mouseleave", () => {
     element.style.transform = "";
